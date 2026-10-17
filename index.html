@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="qmt3oEgAojn5Hfhp53XQDz">
+<head data-page-node-id="7NT1IzcSyN1GvbnAMIuZD5">
+<meta charset="UTF-8" data-page-node-id="JTlMHDRHJoHOERRjM1JyYd">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="GkCoHMncoLE8kN6votuqLz">
+<title>雅德之声 · 南宁市江南区富德小学校歌</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#26332e;
+    --ink-soft:#5f6f67;
+    --seal:#a9492f;
+    --bar:rgba(38,51,46,.13);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);
+    background:
+      radial-gradient(120% 78% at 50% -8%, #fffdf8 0%, #f7f3ea 42%, #efe7d7 100%);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+  /* ---------- 玉兰线描 ---------- */
+  .bloom{
+    position:fixed;top:-70px;right:-80px;width:430px;height:430px;
+    color:var(--ink);opacity:.075;pointer-events:none;z-index:1;
+  }
+  .bloom2{
+    position:fixed;bottom:-120px;left:-110px;width:340px;height:340px;
+    color:var(--ink);opacity:.05;pointer-events:none;z-index:1;
+    transform:rotate(180deg);
+  }
+  /* ---------- 布局 ---------- */
+  .shell{
+    position:relative;z-index:3;height:100dvh;display:flex;flex-direction:column;
+    padding:clamp(18px,3.4vh,38px) clamp(18px,5vw,48px) clamp(14px,2.4vh,26px);
+    max-width:920px;margin:0 auto;
+  }
+  header{text-align:center;flex:0 0 auto;opacity:0;animation:fadeUp 1.1s .15s cubic-bezier(.2,.7,.3,1) forwards}
+  .school{
+    font-size:11px;letter-spacing:.42em;color:var(--ink-soft);opacity:.8;
+    text-indent:.42em;margin-bottom:10px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(28px,4.4vh,40px);
+    letter-spacing:.2em;text-indent:.2em;margin:0;line-height:1.35;
+  }
+  .sub{
+    margin-top:8px;font-size:11.5px;letter-spacing:.28em;text-indent:.28em;
+    color:var(--seal);opacity:.72;
+  }
+  .rule{
+    width:34px;height:1px;background:var(--seal);opacity:.35;margin:16px auto 0;
+  }
+  /* ---------- 歌词 ---------- */
+  .stage{
+    position:relative;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
+    justify-content:center;margin-top:6px;
+  }
+  .sec{
+    flex:0 0 auto;height:16px;line-height:16px;margin:18px auto 2px;
+    text-align:center;font-size:10px;letter-spacing:.4em;text-indent:.4em;
+    color:var(--seal);opacity:0;transition:opacity .7s ease;
+    pointer-events:none;white-space:nowrap;
+  }
+  .sec.on{opacity:.55}
+  .view{
+    position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 26%,#000 74%,transparent 100%);
+            mask-image:linear-gradient(to bottom,transparent 0%,#000 26%,#000 74%,transparent 100%);
+  }
+  .track{
+    position:absolute;left:0;right:0;top:0;
+    transition:transform .62s cubic-bezier(.22,.61,.36,1);
+    will-change:transform;
+  }
+  .line{
+    font-family:var(--serif);
+    font-size:clamp(17px,2.35vh,21px);
+    line-height:1.5;
+    padding:.8em 0;
+    text-align:center;
+    color:var(--ink);
+    opacity:.27;
+    transform:scale(1);
+    transform-origin:center center;
+    transition:opacity .5s ease,transform .62s cubic-bezier(.22,.61,.36,1),color .5s;
+    cursor:pointer;
+    user-select:none;
+    letter-spacing:.055em;
+    white-space:nowrap;
+  }
+  .line:hover{opacity:.55}
+  .line.near{opacity:.5}
+  .line.on{
+    opacity:1;
+    transform:scale(1.34);
+    color:#1c2823;
+    letter-spacing:.075em;
+  }
+  .line.music{
+    font-family:var(--sans);font-size:13px;letter-spacing:.42em;
+    color:var(--ink-soft);font-style:normal;opacity:.18;
+  }
+  .line.music.on,.line.music.near{opacity:.3;transform:scale(1)}
+  .line.music.on{
+    color:var(--seal);opacity:.9;font-size:15px;letter-spacing:.55em;text-indent:.55em;
+  }
+  /* ---------- 播放条 ---------- */
+  .player{
+    flex:0 0 auto;display:flex;align-items:center;gap:14px;
+    max-width:600px;width:100%;margin:0 auto;
+    opacity:0;animation:fadeUp 1.1s .45s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  .play{
+    flex:0 0 auto;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;
+    background:linear-gradient(160deg,#3a574b,#22362d);
+    color:#fdfbf5;display:grid;place-items:center;
+    box-shadow:0 10px 22px -8px rgba(34,54,45,.55),inset 0 1px 0 rgba(255,255,255,.18);
+    transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s;
+  }
+  .play:hover{transform:translateY(-2px);box-shadow:0 16px 28px -10px rgba(34,54,45,.6),inset 0 1px 0 rgba(255,255,255,.18)}
+  .play:active{transform:translateY(0) scale(.96)}
+  .play svg{width:19px;height:19px;display:block}
+  .t{
+    font-size:11.5px;color:#55655d;
+    font-variant-numeric:tabular-nums;letter-spacing:.08em;min-width:34px;
+  }
+  .t.right{text-align:right}
+  .bar{
+    position:relative;flex:1 1 auto;height:3px;border-radius:3px;background:var(--bar);
+    cursor:pointer;touch-action:none;
+  }
+  .bar::before{content:"";position:absolute;left:0;right:0;top:-11px;bottom:-11px}
+  .fill{
+    position:absolute;left:0;top:0;height:100%;width:0;border-radius:2px;
+    background:linear-gradient(90deg,#7d9a8b,#3d5a4d);
+  }
+  .dot{
+    position:absolute;right:-4px;top:50%;width:8px;height:8px;border-radius:50%;
+    background:var(--seal);transform:translateY(-50%);
+    box-shadow:0 0 0 4px rgba(169,73,47,.1);
+    transition:transform .25s;
+  }
+  .bar:hover .dot{transform:translateY(-50%) scale(1.35)}
+  /* ---------- 页脚 ---------- */
+  .credit{
+    flex:0 0 auto;text-align:center;font-size:10.5px;color:var(--ink-soft);
+    letter-spacing:.14em;margin-top:clamp(12px,2vh,20px);
+    opacity:0;animation:fadeUp 1.1s .6s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  /* ---------- 开场遮罩 ---------- */
+  .veil{
+    position:fixed;inset:0;z-index:20;display:grid;place-items:center;
+    background:rgba(246,242,233,.86);
+    -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+    transition:opacity .9s ease,visibility .9s;
+    cursor:pointer;
+  }
+  .veil.hide{opacity:0;visibility:hidden}
+  .veil-in{text-align:center;animation:fadeUp 1s cubic-bezier(.2,.7,.3,1) both}
+  .veil-school{font-size:10px;letter-spacing:.34em;text-indent:.34em;color:var(--ink-soft);opacity:.75}
+  .veil-title{font-family:var(--serif);font-size:27px;letter-spacing:.26em;text-indent:.26em;color:var(--ink);margin-top:10px}
+  .veil-ring{
+    width:96px;height:96px;border-radius:50%;margin:38px auto 26px;
+    border:1px solid rgba(169,73,47,.3);display:grid;place-items:center;
+    position:relative;
+  }
+  .veil-ring::after{
+    content:"";position:absolute;inset:-1px;border-radius:50%;
+    border:1px solid rgba(169,73,47,.35);
+    animation:ripple 2.8s ease-out infinite;
+  }
+  .veil-ring i{
+    width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(160deg,#3a574b,#22362d);color:#fdfbf5;
+    box-shadow:0 12px 26px -10px rgba(34,54,45,.6);
+  }
+  .veil-ring i svg{width:20px;height:20px;margin-left:3px}
+  .veil-t{font-family:var(--serif);font-size:17px;letter-spacing:.34em;text-indent:.34em;color:var(--ink)}
+  .veil-h{margin-top:12px;font-size:10.5px;letter-spacing:.2em;color:var(--ink-soft);opacity:.7}
+  /* ---------- 同步微调 ---------- */
+  .tune{
+    position:fixed;right:14px;bottom:12px;z-index:12;
+    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+    font-size:10.5px;color:var(--ink-soft);
+  }
+  .tune > button{
+    font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--ink-soft);
+    background:transparent;border:1px solid rgba(38,51,46,.14);border-radius:20px;
+    padding:4px 10px;cursor:pointer;opacity:.4;transition:.3s;
+  }
+  .tune > button:hover{opacity:1;color:var(--seal);border-color:rgba(169,73,47,.4)}
+  .tune-panel{
+    display:none;width:252px;padding:13px 14px 11px;border-radius:14px;
+    background:rgba(252,250,245,.95);border:1px solid rgba(38,51,46,.1);
+    box-shadow:0 18px 40px -22px rgba(38,51,46,.55);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    animation:fadeUp .3s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .tune.open .tune-panel{display:block}
+  .tune .row{display:flex;align-items:center;gap:7px;margin-bottom:9px}
+  .tune .row > span{flex:1;letter-spacing:.06em;color:var(--ink);opacity:.8}
+  .tune .row button{
+    font-family:var(--sans);font-size:10px;letter-spacing:.06em;color:var(--ink-soft);
+    background:transparent;border:1px solid rgba(38,51,46,.16);border-radius:20px;
+    padding:3px 9px;cursor:pointer;transition:.25s;
+  }
+  .tune .row button:hover{color:var(--seal);border-color:rgba(169,73,47,.45)}
+  .tune .val{font-variant-numeric:tabular-nums;min-width:40px;text-align:center;color:var(--ink)}
+  .tune .tip{font-size:9.5px;line-height:1.7;color:var(--ink-soft);opacity:.62;letter-spacing:.02em}
+  .taphint{
+    position:fixed;left:50%;bottom:128px;transform:translate(-50%,10px);z-index:13;
+    display:flex;align-items:center;gap:8px;
+    padding:8px 16px;border-radius:999px;background:rgba(38,54,46,.93);
+    color:#f4f0e6;font-size:11px;letter-spacing:.03em;white-space:nowrap;
+    opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;
+    box-shadow:0 12px 28px -14px rgba(20,30,26,.6);
+  }
+  .taphint.show{opacity:1;transform:translate(-50%,0)}
+  .taphint b{font-weight:600;color:#e9bfae;letter-spacing:.06em}
+  .taphint em{font-style:normal;opacity:.55}
+  @keyframes ripple{0%{transform:scale(1);opacity:.9}70%{transform:scale(1.35);opacity:0}100%{opacity:0}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media (max-width:560px){
+    .bloom{width:280px;height:280px;top:-50px;right:-70px}
+    .line{white-space:normal;padding:.55em 6px}
+    .line.on{transform:scale(1.16)}
+    .player{gap:11px}
+    .play{width:48px;height:48px}
+    .credit{font-size:9.5px;letter-spacing:.08em}
+    .tune{left:12px;right:auto;bottom:8px;gap:6px}
+    .tune button{padding:3px 7px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  }
+</style>
+</head>
+<body data-page-node-id="gLdyGkY0x2UbjzVeqloTJc">
+
+<div class="grain" data-page-node-id="T55mIxSZYkwVVs0jle1BGM"></div>
+
+<svg class="bloom" viewBox="0 0 420 420" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" data-page-node-id="qlzJA63cCdIV8AO05nBf61">
+  <defs data-page-node-id="RAAlH1WvZ2OH8C7NQ1Nrr0">
+    <g id="petal" data-page-node-id="yVWyKeavb4iqTVaAp274Su">
+      <ellipse cx="0" cy="-23" rx="11.5" ry="22" data-page-node-id="AOd8vtj8zAlOvSACwd9GKX"/>
+      <ellipse cx="0" cy="-23" rx="11.5" ry="22" transform="rotate(72)" data-page-node-id="jAHtCz9mu0Cv9wuXvdCiWf"/>
+      <ellipse cx="0" cy="-23" rx="11.5" ry="22" transform="rotate(144)" data-page-node-id="Fn2PBEuOvg6LqeXfGgrd5b"/>
+      <ellipse cx="0" cy="-23" rx="11.5" ry="22" transform="rotate(216)" data-page-node-id="cxooSQLVhBXkF7CiHVGyKk"/>
+      <ellipse cx="0" cy="-23" rx="11.5" ry="22" transform="rotate(288)" data-page-node-id="ZQGgh90KCLWUdeELwcVfrd"/>
+      <circle cx="0" cy="0" r="3.6" data-page-node-id="he501k1RFpNKzHTNLlsDG9"/>
+    </g>
+  </defs>
+  <path d="M420 44C374 58 336 86 306 124c-26 33-56 60-94 80" data-page-node-id="kEeXJn9GwCoT5KqYTazfeY"/>
+  <path d="M356 78c-2-26 1-47 12-64" data-page-node-id="I2xutFRFTwGOWKNbHrI0Zb"/>
+  <path d="M306 124c-26-6-47-20-59-39" data-page-node-id="UpqwCFgHKE1wAXkIlKDb0l"/>
+  <use href="#petal" transform="translate(306,124) scale(1)" data-page-node-id="pBmfDjMQlhFmalA8ZSocUA"/>
+  <use href="#petal" transform="translate(212,204) scale(.72) rotate(18)" data-page-node-id="gld8nJlxDfsPQeNU2esGYf"/>
+  <use href="#petal" transform="translate(150,258) scale(.5) rotate(-14)" data-page-node-id="eHkSQzm2iNjsxxncepDpHL"/>
+  <path d="M212 204c-20 12-40 14-60 8" data-page-node-id="2bdOAtS1Dug1R78GkFO8Zs"/>
+  <path d="M150 258c-14 18-32 30-54 34" data-page-node-id="1JcdpVAiretE6wwwanmqxO"/>
+  <ellipse cx="92" cy="296" rx="5.5" ry="12" transform="rotate(-42 92 296)" data-page-node-id="XSl8gZ0CvIWL0az36IXf5H"/>
+</svg>
+
+<svg class="bloom2" viewBox="0 0 420 420" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" data-page-node-id="4uKqhL7zBJVHwgE9a0mWSD">
+  <g transform="translate(196,214) rotate(24)" data-page-node-id="QJHTKulKSXmfWZUxbRBeNO">
+    <ellipse cx="0" cy="-34" rx="17" ry="33" data-page-node-id="1FnKPs5wOGjLo4xLLAaFT9"/>
+    <ellipse cx="0" cy="-34" rx="17" ry="33" transform="rotate(72)" data-page-node-id="c1FdzgRL2cClBjWt6UmKOr"/>
+    <ellipse cx="0" cy="-34" rx="17" ry="33" transform="rotate(144)" data-page-node-id="OMQgiNIkY32mwtgmUPiNMh"/>
+    <ellipse cx="0" cy="-34" rx="17" ry="33" transform="rotate(216)" data-page-node-id="GsP8olnSWRAQyzUL4TPiVQ"/>
+    <ellipse cx="0" cy="-34" rx="17" ry="33" transform="rotate(288)" data-page-node-id="GTmMcQGDOsD9MDpOOJyFw1"/>
+    <circle cx="0" cy="0" r="5" data-page-node-id="OThxBrDFsey47D5iHQ5l4K"/>
+  </g>
+  <path d="M196 214c34 26 60 56 76 92" data-page-node-id="tOiaXszoI3CdAJFDT8sAuJ"/>
+</svg>
+
+<div class="shell" data-page-node-id="9SVtKImfhkM6LGxPBq5vdC">
+  <header data-page-node-id="tf4mZhhmRgjHxLldEHdpHz">
+    <div class="school" data-page-node-id="ECBPHrTTJvhx2g0fJG1jgX">南宁市江南区富德小学</div>
+    <h1 data-page-node-id="wkZXBDzhLsYLfkzi0pTiFN">雅德之声</h1>
+    <div class="sub" data-page-node-id="ZHtBylyQVK4ONMesw5dOgd">校 歌 · 女 声 领 唱</div>
+    <div class="rule" data-page-node-id="I5jIdiWvsCNuxVatQMSAQi"></div>
+  </header>
+
+  <main class="stage" data-page-node-id="fVETuosrcjNPvyfE3MH9ni">
+    <div class="sec" id="sec" data-page-node-id="z6OJX2kryXB2PnRvd2wHZh"></div>
+    <div class="view" id="view" data-page-node-id="gj7NgUr364alHZ8JxcRL0d">
+      <div class="track" id="track" data-page-node-id="wSrdKATkvExgqZ3beW2FCJ"></div>
+    </div>
+  </main>
+
+  <footer class="player" data-page-node-id="5BeqvRQkWtJrslAHFnQAkR">
+    <button class="play" id="play" aria-label="播放" data-page-node-id="UZuB7GCXV5nybwuEUubNMA">
+      <svg id="ico" viewBox="0 0 24 24" fill="currentColor" data-page-node-id="nXr0KQcmZhr3a3UnA9Iwl8"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.4-6.8c.6-.4.6-1.4 0-1.8L9.6 4.3C8.9 3.9 8 4.4 8 5.2z" data-page-node-id="jZnVVIsnXhlT2S9Pk95pOv"/></svg>
+    </button>
+    <span class="t" id="cur" data-page-node-id="WAnLkVINDyEesawS8PJU4Z">0:00</span>
+    <div class="bar" id="bar" data-page-node-id="hzYXo5dUZat64uBr0THasA"><div class="fill" id="fill" data-page-node-id="GvZl2PmWkNpGsHlYCPoXss"><span class="dot" data-page-node-id="y8C7q1ZnWlSVRmZOBOJgAX"></span></div></div>
+    <span class="t right" id="dur" data-page-node-id="sbxxKJL5XPwo6vqGuyY4zB">0:00</span>
+  </footer>
+
+  <div class="credit" data-page-node-id="BlaMDaPl3Hu7IZaXjs5iQ3">
+    词　雷在学　·　曲　廖才艺
+  </div>
+</div>
+
+<div class="veil" id="veil" data-page-node-id="WVgDsCzVkEugkPduqnIEuU">
+  <div class="veil-in" data-page-node-id="3L9tsV2KyEN0X1rCrwR3Wu">
+    <div class="veil-school" data-page-node-id="hhTM8MpjTwgIqJvJLnzEJv">南宁市江南区富德小学</div>
+    <div class="veil-title" data-page-node-id="UneRc5rn00XFD5RMs3KPnR">雅德之声</div>
+    <div class="veil-ring" data-page-node-id="MyDBm8vDQ69sPNFoM8fx8N"><i data-page-node-id="zGXcDe23pb65BkZsMNB1Im"><svg viewBox="0 0 24 24" fill="currentColor" data-page-node-id="GGsaVkQlZ6gOfC4R8et1GZ"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.4-6.8c.6-.4.6-1.4 0-1.8L9.6 4.3C8.9 3.9 8 4.4 8 5.2z" data-page-node-id="pVLmbQ7dPkSsvsoLx0z6Kx"/></svg></i></div>
+    <div class="veil-t" data-page-node-id="3G0S4FHe47eeDyq3CfLnHB">轻触聆听</div>
+    <div class="veil-h" data-page-node-id="2xrfofVGL6yVuG7eyGhvCD">校歌 · 女声领唱 · 3:49</div>
+  </div>
+</div>
+
+<div class="tune" id="tune" data-page-node-id="3tbYgDNcNyHf6JjBeH9UWE">
+  <div class="tune-panel" id="tunePanel" data-page-node-id="zYYdZFr6DhLdLfYW0gDd2r">
+    <div class="row" data-page-node-id="eRxPA51WSb3Vy3skz1ZECM">
+      <span data-page-node-id="v1a8dPkhvCBK0JbqSnRvDr">整体偏移</span>
+      <button id="early" data-page-node-id="qWlX9pMTKk6x0eDmmdrICB">−</button>
+      <b class="val" id="offv" data-page-node-id="1m0O0KATGCI9ldez3PQJ8u">0.0s</b>
+      <button id="late" data-page-node-id="wUoiyVR77tVjnKOJ3VZduA">+</button>
+    </div>
+    <div class="row" data-page-node-id="Rlt5hgBOCuxTwEAzTCUvZD">
+      <button id="tapBtn" data-page-node-id="0XuoCloTUa3t14wPl9fhck">对时模式</button>
+      <button id="resetBtn" data-page-node-id="aHbpCcaEVqG5BYkEiqKPG9">重置</button>
+    </div>
+    <div class="tip" data-page-node-id="4RG1pCaJD91I7klDa6oH8F">整首偏早/偏晚用「整体偏移」。若个别句子不准，进入对时模式：播放时每句开口处按一次空格，即可逐句校准。</div>
+  </div>
+  <button id="tuneBtn" data-page-node-id="zwZwZ0rzCHLp5ZUlGHJTK4">校准</button>
+</div>
+
+<div class="taphint" id="taphint" data-page-node-id="yBg8OCkPxGFfZB4mVs0Vhv"><span id="tapTxt" data-page-node-id="DAYEYqO4PPfoRAj41NgN3H"></span><em data-page-node-id="Sqmii0VWw1C08NHDhK5B2Y">·</em><b data-page-node-id="GYJiDZaTrCINC1qCYM22U0">空格</b> 记录<em data-page-node-id="FBJjdreo2INn2b1jUUldY7">·</em><b data-page-node-id="uhQwrpM9BqGGEEYR7ZglqR">Esc</b> 结束</div>
+
+<audio id="audio" src="assets/theme.mp3" preload="auto" data-page-node-id="nHkslRo1qhd6obhC3kzXCx"></audio>
+
+<script>
+(function(){
+  /* 时间轴由合唱谱小节号推得：4/4，♩≈106，第1小节起于 1.16s */
+  var L = [
+    {t:0,      x:"♪ 前奏",                        m:1, s:"序曲"},
+    {t:21.54,  x:"富德之声，书韵悠扬，",            s:"第一段"},
+    {t:26.06,  x:"这里是我们成长的摇篮，"},
+    {t:32.86,  x:"阳光乐学，敢于拼搏，"},
+    {t:37.38,  x:"篮球跃动是我们童年的，"},
+    {t:44.18,  x:"梦——"},
+    {t:46.44,  x:"生命之花在这里生长，"},
+    {t:50.97,  x:"玉兰树下，雅德美少年，"},
+    {t:55.50,  x:"在知识的海洋里徜徉。"},
+    {t:62.29,  x:"啊——",                          s:"副歌"},
+    {t:64.55,  x:"追梦吧少年，"},
+    {t:69.08,  x:"富满诗书启智慧，"},
+    {t:73.61,  x:"书香学子"},
+    {t:78.14,  x:"德行天下快乐长。"},
+    {t:82.66,  x:"啊——"},
+    {t:84.93,  x:"追梦吧少年，"},
+    {t:87.19,  x:"富满诗书启智慧，"},
+    {t:91.72,  x:"志存高远"},
+    {t:96.25,  x:"德行天下圆梦想。"},
+    {t:107.57, x:"♪ 间奏",                        m:1, s:"间奏"},
+    {t:127.94, x:"雅德之声，师生修养，",            s:"第二段"},
+    {t:132.47, x:"这里是我们美丽的校园，"},
+    {t:139.27, x:"仁爱儒雅，"},
+    {t:143.80, x:"共同成长，"},
+    {t:146.06, x:"阅读知行坚定少年志。"},
+    {t:152.84, x:"生命之花在这里绽放，"},
+    {t:157.37, x:"文化石旁，雅德美少年，"},
+    {t:161.90, x:"在智慧的殿堂里欢唱。"},
+    {t:164.17, x:"欢唱。",                        s:"尾声"},
+    {t:169.83, x:"啊，追梦吧少年，"},
+    {t:175.49, x:"富满诗书启智慧，"},
+    {t:182.28, x:"书香学子德行天下，"},
+    {t:186.81, x:"快乐长。"},
+    {t:188.51, x:"啊，追梦吧少年，"},
+    {t:193.60, x:"富满诗书启智慧，"},
+    {t:198.13, x:"志存高远"},
+    {t:202.66, x:"德行天下圆梦想，"},
+    {t:209.45, x:"德行天下圆梦想。"}
+  ];
+
+  var audio = document.getElementById('audio'),
+      track = document.getElementById('track'),
+      view  = document.getElementById('view'),
+      secEl = document.getElementById('sec'),
+      bar   = document.getElementById('bar'),
+      fill  = document.getElementById('fill'),
+      curEl = document.getElementById('cur'),
+      durEl = document.getElementById('dur'),
+      playB = document.getElementById('play'),
+      ico   = document.getElementById('ico'),
+      veil  = document.getElementById('veil'),
+      offv  = document.getElementById('offv');
+
+  var nodes = [], idx = -1, shift = 0, dragging = false, curSec = '';
+  var T = L.map(function(o){ return o.t; });      /* 实际生效的时间轴 */
+  var taps = {}, tapMode = false, tapIdx = 0;
+
+  /* 生成歌词行 */
+  L.forEach(function(item,i){
+    var d = document.createElement('div');
+    d.className = 'line' + (item.m ? ' music' : '');
+    d.textContent = item.x;
+    d.addEventListener('click', function(){
+      if (tapMode){ tapIdx = i; updateTapHint(); return; }
+      audio.currentTime = Math.max(0, T[i] - 0.05);
+      if (audio.paused) play();
+      paint(true);
+    });
+    track.appendChild(d);
+    nodes.push(d);
+  });
+
+  function center(){
+    if (idx < 0) return;
+    var el = nodes[idx], H = view.clientHeight;
+    var y = H/2 - (el.offsetTop + el.offsetHeight/2);
+    track.style.transform = 'translateY(' + y.toFixed(1) + 'px)';
+  }
+
+  function section(){
+    for (var i = idx; i >= 0; i--){
+      if (L[i].s){ return L[i].s; }
+    }
+    return '';
+  }
+
+  function paint(force){
+    var t = audio.currentTime;
+    var lo = 0, hi = L.length - 1, r = 0;
+    while (lo <= hi){
+      var mid = (lo + hi) >> 1;
+      if (T[mid] <= t){ r = mid; lo = mid + 1; } else { hi = mid - 1; }
+    }
+    if (r === idx && !force){ tick(); return; }
+    idx = r;
+    nodes.forEach(function(n,i){
+      n.classList.toggle('on', i === idx);
+      n.classList.toggle('near', Math.abs(i - idx) === 1);
+    });
+    center();
+    var s = section();
+    if (s !== curSec){
+      curSec = s;
+      if (s){
+        secEl.textContent = s;
+        secEl.classList.add('on');
+      } else {
+        secEl.classList.remove('on');
+      }
+    }
+    tick();
+  }
+
+  function fmt(sec){
+    if (!isFinite(sec) || sec < 0) sec = 0;
+    var m = Math.floor(sec/60), s = Math.floor(sec%60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function tick(){
+    var d = audio.duration || 229.3;
+    var p = Math.min(1, Math.max(0, audio.currentTime / d));
+    fill.style.width = (p*100).toFixed(3) + '%';
+    curEl.textContent = fmt(audio.currentTime);
+  }
+
+  function setIcon(playing){
+    ico.innerHTML = playing
+      ? '<rect x="7" y="5" width="3.6" height="14" rx="1.4"/><rect x="13.4" y="5" width="3.6" height="14" rx="1.4"/>'
+      : '<path d="M8 5.2v13.6c0 .8.9 1.3 1.6.9l10.4-6.8c.6-.4.6-1.4 0-1.8L9.6 4.3C8.9 3.9 8 4.4 8 5.2z"/>';
+    playB.setAttribute('aria-label', playing ? '暂停' : '播放');
+  }
+
+  function play(){
+    if (audio.ended) audio.currentTime = 0;
+    audio.play().then(function(){
+      veil.classList.add('hide');
+      setIcon(true);
+    }).catch(function(){
+      veil.classList.remove('hide');
+      setIcon(false);
+    });
+  }
+  function pause(){ audio.pause(); setIcon(false); }
+  function toggle(){ audio.paused ? play() : pause(); }
+
+  playB.addEventListener('click', toggle);
+  veil.addEventListener('click', play);
+
+  audio.addEventListener('loadedmetadata', function(){ durEl.textContent = fmt(audio.duration); });
+  audio.addEventListener('timeupdate', function(){ paint(false); });
+  audio.addEventListener('play', function(){ setIcon(true); });
+  audio.addEventListener('pause', function(){ setIcon(false); });
+  audio.addEventListener('ended', function(){ setIcon(false); });
+  audio.addEventListener('error', function(){
+    veil.querySelector('.veil-t').textContent = '音频未能加载';
+    veil.querySelector('.veil-h').textContent = '请确认 assets/theme.mp3 与网页在同一目录';
+  });
+
+  /* 进度条拖动 */
+  function seekTo(clientX){
+    var r = bar.getBoundingClientRect();
+    var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+    audio.currentTime = p * (audio.duration || 229.3);
+    paint(true);
+  }
+  bar.addEventListener('pointerdown', function(e){
+    dragging = true; bar.setPointerCapture(e.pointerId); seekTo(e.clientX);
+  });
+  bar.addEventListener('pointermove', function(e){ if (dragging) seekTo(e.clientX); });
+  bar.addEventListener('pointerup', function(e){ dragging = false; });
+  bar.addEventListener('pointercancel', function(){ dragging = false; });
+
+  /* 键盘 */
+  document.addEventListener('keydown', function(e){
+    if (e.code === 'Space'){
+      e.preventDefault();
+      if (tapMode) recordTap(); else toggle();
+    }
+    else if (e.code === 'Escape'){ if (tapMode) exitTap(); }
+    else if (e.code === 'ArrowRight'){ e.preventDefault(); audio.currentTime = Math.min(audio.duration||0, audio.currentTime + 5); }
+    else if (e.code === 'ArrowLeft'){ e.preventDefault(); audio.currentTime = Math.max(0, audio.currentTime - 5); }
+  });
+
+  /* ===== 校准 ===== */
+  var tuneEl = document.getElementById('tune'),
+      taphint = document.getElementById('taphint'),
+      tapTxt = document.getElementById('tapTxt');
+
+  function fmtOff(){
+    offv.textContent = (shift > 0 ? '+' : shift < 0 ? '−' : '') + Math.abs(shift).toFixed(1) + 's';
+  }
+  function rebuild(){
+    T = L.map(function(o,i){
+      return taps[i] !== undefined ? taps[i] : Math.max(0, o.t + shift);
+    });
+  }
+  function save(){
+    if (Object.keys(taps).length) localStorage.setItem('ydzs-taps', JSON.stringify(taps));
+    else localStorage.removeItem('ydzs-taps');
+    localStorage.setItem('ydzs-shift', shift.toFixed(1));
+    fmtOff(); rebuild(); paint(true);
+  }
+  function load(){
+    var v = parseFloat(localStorage.getItem('ydzs-shift'));
+    shift = isFinite(v) ? v : 0;
+    try { taps = JSON.parse(localStorage.getItem('ydzs-taps') || '{}') || {}; } catch(err){ taps = {}; }
+    fmtOff(); rebuild();
+  }
+
+  function updateTapHint(){
+    if (!tapMode){ taphint.classList.remove('show'); return; }
+    var n = Math.min(tapIdx, L.length - 1);
+    tapTxt.textContent = (tapIdx >= L.length ? '已完成' : '第 ' + (n+1) + ' 句  ' + L[n].x);
+    taphint.classList.add('show');
+  }
+  function recordTap(){
+    if (tapIdx >= L.length){ exitTap(); return; }
+    taps[tapIdx] = Math.round(audio.currentTime * 100) / 100;
+    rebuild(); paint(true);
+    tapIdx++;
+    if (tapIdx >= L.length){ save(); updateTapHint(); setTimeout(exitTap, 900); }
+    else { save(); updateTapHint(); }
+  }
+  function enterTap(){
+    tapMode = true; tapIdx = idx < 0 ? 0 : idx;
+    tuneEl.classList.remove('open');
+    updateTapHint();
+    audio.currentTime = Math.max(0, T[tapIdx] - 4);
+    paint(true);
+    if (audio.paused) play();
+  }
+  function exitTap(){
+    tapMode = false;
+    taphint.classList.remove('show');
+    save();
+  }
+
+  document.getElementById('tuneBtn').addEventListener('click', function(e){
+    e.stopPropagation();
+    tuneEl.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if (!tuneEl.contains(e.target)) tuneEl.classList.remove('open');
+  });
+  document.getElementById('early').addEventListener('click', function(e){
+    e.stopPropagation(); shift = Math.min(6, +(shift + 0.1).toFixed(1)); save();
+  });
+  document.getElementById('late').addEventListener('click', function(e){
+    e.stopPropagation(); shift = Math.max(-6, +(shift - 0.1).toFixed(1)); save();
+  });
+  document.getElementById('tapBtn').addEventListener('click', function(e){
+    e.stopPropagation(); tapMode ? exitTap() : enterTap();
+  });
+  document.getElementById('resetBtn').addEventListener('click', function(e){
+    e.stopPropagation(); taps = {}; shift = 0; save(); tuneEl.classList.remove('open');
+  });
+  load();
+
+  /* 帧循环：拖动与高亮更顺滑 */
+  (function loop(){
+    if (!audio.paused || idx < 0) tick();
+    if (!audio.paused || dragging) paint(false);
+    requestAnimationFrame(loop);
+  })();
+
+  window.addEventListener('resize', center);
+  window.addEventListener('orientationchange', function(){ setTimeout(center, 200); });
+
+  /* 初始状态 */
+  nodes[0].classList.add('on');
+  idx = 0;
+  requestAnimationFrame(function(){ center(); paint(true); });
+
+  /* 尝试自动播放 */
+  function tryAuto(){
+    audio.play().then(function(){
+      veil.classList.add('hide'); setIcon(true);
+    }).catch(function(){
+      setIcon(false);   /* 被拦截则保留遮罩，等一次点击 */
+    });
+  }
+  if (audio.readyState >= 2) tryAuto();
+  else audio.addEventListener('canplay', tryAuto, {once:true});
+})();
+</script>
+</body>
+</html>
